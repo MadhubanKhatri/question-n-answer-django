@@ -1,0 +1,18 @@
+{% extends 'html_files/base.html' %}
+
+{% block title %}{% endblock %}
+
+
+{% block body %}
+	<div class="container-fluid my-4 mx-5 w-50 justify-content-center">
+		<h1>Ask your question:</h1>
+		<form method="post" action="{% url 'save_question' %}">
+			{% csrf_token %}
+			<textarea class="form-control" name="askQuestion" placeholder="Write your Question..." cols="100" rows="10"></textarea>
+			<br>
+			<input type="submit" value="Submit" class="btn btn-primary">
+		</form>
+	</div>
+	
+	
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'html_files/base.html' %}
+
+{% block title%}Home{% endblock %}
+
+{% block body%}
+<div class="container-fluid w-75 my-3">
+	
+
+	{% if questions %}
+	{% for question in questions reversed %}
+	<div class="alert alert-success" role="alert">
+
+		<h4 class="alert-heading"><a href="{% url 'show_answers' question.question %}">{{question.question}}</a></h4>
+		<small>by {{question.user.user_name}}, {{question.upload_date}} </small>
+		<hr>
+		<p>Total Answers - {{question.answer.count}}</p>
+		{% if question.user.user_name != request.session.user_name %}
+			<a href="{% url 'create_post' question.question %}">Write the answer</a>
+		{% endif %}
+		<hr>
+	</div>
+	{% endfor %}
+	{% endif %}
+
+	
+</div>
+{% endblock %}

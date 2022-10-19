@@ -1,0 +1,35 @@
+{% extends 'html_files/base.html' %}
+
+{% block title %}Signup{% endblock %}
+
+{% block body %}
+<div class="container-fluid w-50 my-4 py-5" style="color: white;">
+	<h3 style="text-align:center;">Signup</h3>
+	<form action="{% url 'signup' %}" method="post">
+		{% csrf_token %}
+	<div class="mb-3">
+		<label for="exampleFormControlInput1" class="form-label">Username</label>
+		<input type="text" class="form-control" name="uname" id="exampleFormControlInput1" placeholder="eg. User name">
+	</div>
+	<div class="mb-3">
+		<label for="exampleFormControlInput1" class="form-label">Email address</label>
+		<input type="email" class="form-control" name="mail" id="exampleFormControlInput1" placeholder="eg. name@example.com">
+	</div>
+	<div class="mb-3">
+		<label for="exampleFormControlTextarea1" class="form-label">Password</label>
+		<input type="password" class="form-control" name="pwd" id="exampleFormControlInput1" placeholder="eg. Password">
+	</div>
+	<div class="mb-3">
+		<label for="exampleFormControlInput1" class="form-label">Gender</label>
+		<select class="form-control" name="gen">
+			<option>Male</option>
+			<option>Female</option>
+			<option>Other</option>
+		</select>
+	</div>
+	<div class="mb-3">
+		<input type="submit" class="form-control btn btn-outline-success" id="exampleFormControlInput1" value="Signup">
+	</div>
+	</form>
+</div>
+{% endblock %}

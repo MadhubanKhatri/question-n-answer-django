@@ -1,0 +1,33 @@
+{% extends 'html_files/base.html' %}
+
+{% block title %}{{request.session.user_name}} | Profile{% endblock %}
+
+
+
+{% block body %}
+	<h1 class="my-4">Hello {{request.session.user_name}} !</h1>
+	
+	{# all the Quetions of user are displayed here. #}
+	<div class="alert alert-success w-50 mx-1 my-3" role="alert">
+		<h2>Your Questions</h2>
+		<hr>
+		{% for question in user_questions %}
+			<h4 class="alert-heading"><a href="{% url 'show_answers' question.question %}">{{question.question}}</a></h4>
+			<small>{{question.upload_date}}</small>
+			<hr>
+		{% endfor %}
+	</div>
+
+
+	{# all the Answers of user are displayed here. #}
+	<div class="alert alert-success mx-4 w-50 my-3" role="alert" style="position: absolute; top: 135px; right: -30px;">
+		<h2>Your Answers</h2>
+		<hr>
+		{% for answer in user_answers %}
+			<h6 class="alert-heading">{{answer.answer|safe}}</h6>
+			<small>{{answer.upload_date}}</small>
+			<hr>
+		{% endfor %}
+	</div>
+	
+{% endblock %}

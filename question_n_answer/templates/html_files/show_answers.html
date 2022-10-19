@@ -1,0 +1,24 @@
+{% extends 'html_files/base.html' %}
+
+{% block title %}All answers{% endblock %}
+
+{% block body %}
+
+	<div class="alert alert-success w-75 mx-5 my-3" role="alert">
+		<h4 class="alert-heading text-danger">{{question_to_answer}}</h4>
+		<small>by {{question_to_answer.user.user_name}}</small>
+		<hr>
+		{% for answer in question_to_answer.answer.all reversed %}
+			<p><b>{{answer.answer|safe}}</b></p>
+			<small style="color: black;">by {{answer.user}}</small><br>
+			<hr>
+			<br>
+		{% empty %}
+			<h4>No answers yet...</h4>
+			{% if question_to_answer.user.user_name != request.session.user_name %}
+				<a href="{% url 'create_post' question_to_answer.question %}">Write a answer</a>
+			{% endif %}
+		{% endfor %}
+	</div>
+
+{% endblock %}

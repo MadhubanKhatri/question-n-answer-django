@@ -1,0 +1,22 @@
+{% extends 'html_files/base.html' %}
+
+{% block title %}{% endblock %}
+
+
+{% block body %}
+	
+		{% if query %}
+			{% for q in query reversed%}
+			<div class="alert alert-success w-75 mx-5 my-3" role="alert">
+				<h4 class="alert-heading text-danger"><a href="{% url 'show_answers' q.question %}">{{q.question}}</a></h4>
+				<small>by {{q.user}} | {{q.upload_date}}</small>
+			</div>
+			{% endfor %}
+		{% else %}
+			<h3 class="text-center my-5">No search results found.</h3>
+		{% endif %}
+	
+
+
+	
+{% endblock %}

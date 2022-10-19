@@ -1,0 +1,21 @@
+{% extends 'html_files/base.html' %}
+
+{% block title %}{{request.session.user_name}}|Posts|{% endblock %}
+
+
+
+{% block body %}
+	{# answer the question #}
+	
+	<div class="container-fluid w-75 my-4">
+		<h3>{{question.question}}</h3>
+		<hr>
+		<form action="{% url 'save_answer' question.question %}" method="post">	
+			{% csrf_token %}
+			<textarea id="tiny_textarea" name="answer" placeholder="Write your answer here..."></textarea>
+			<br>
+			<input type="submit" value="Submit the answer" class="btn btn-primary">
+		</form>
+	</div>
+	
+{% endblock %}
